@@ -31,14 +31,14 @@ class BybitFetcher:
 
             if price_type == 'mark':
                 if is_linear:
-                    data = self.ccxt_client.publicLinearGetMarkPriceKline({
+                    data = self.ccxt_client.public_linear_get_mark_price_kline({
                         'symbol': market,
                         'from': from_time,
                         'interval': interval,
                         'limit': limit
                     })['result']
                 else:
-                    data = self.ccxt_client.v2PublicGetMarkPriceKline({
+                    data = self.ccxt_client.v2_public_get_mark_price_kline({
                         'symbol': market,
                         'from': from_time,
                         'interval': interval,
@@ -46,14 +46,14 @@ class BybitFetcher:
                     })['result']
             elif price_type == 'index':
                 if is_linear:
-                    data = self.ccxt_client.publicLinearGetIndexPriceKline({
+                    data = self.ccxt_client.public_linear_get_index_price_kline({
                         'symbol': market,
                         'from': from_time,
                         'interval': interval,
                         'limit': limit
                     })['result']
                 else:
-                    data = self.ccxt_client.v2PublicGetIndexPriceKline({
+                    data = self.ccxt_client.v2_public_get_index_price_kline({
                         'symbol': market,
                         'from': from_time,
                         'interval': interval,
@@ -61,14 +61,14 @@ class BybitFetcher:
                     })['result']
             elif price_type == 'premium_index':
                 if is_linear:
-                    data = self.ccxt_client.publicLinearGetPremiumIndexKline({
+                    data = self.ccxt_client.public_linear_get_premium_index_kline({
                         'symbol': market,
                         'from': from_time,
                         'interval': interval,
                         'limit': limit
                     })['result']
                 else:
-                    data = self.ccxt_client.v2PublicGetPremiumIndexKline({
+                    data = self.ccxt_client.v2_public_get_premium_index_kline({
                         'symbol': market,
                         'from': from_time,
                         'interval': interval,
@@ -76,14 +76,14 @@ class BybitFetcher:
                     })['result']
             else:
                 if is_linear:
-                    data = self.ccxt_client.publicLinearGetKline({
+                    data = self.ccxt_client.public_linear_get_kline({
                         'symbol': market,
                         'from': from_time,
                         'interval': interval,
                         'limit': limit
                     })['result']
                 else:
-                    data = self.ccxt_client.v2PublicGetKlineList({
+                    data = self.ccxt_client.v2_public_get_kline_list({
                         'symbol': market,
                         'from': from_time,
                         'interval': interval,

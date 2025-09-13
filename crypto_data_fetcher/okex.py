@@ -24,7 +24,7 @@ class OkexFetcher:
         end_time = int(time.time() * 1000 - 1)
 
         while from_time < end_time:
-            data = self.ccxt_client.publicGetMarketHistoryCandles({
+            data = self.ccxt_client.public_get_market_history_candles({
                 'instId': market,
                 'after': end_time, # end_time未満 (ftxと違い、end_timeを含まない)
                 'bar': format_interval_sec(interval_sec),

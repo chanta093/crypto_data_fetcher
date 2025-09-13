@@ -35,7 +35,7 @@ class FtxFetcher:
             self.logger.debug('{} {} {}'.format(market, from_time, end_time))
 
             if price_type == 'index':
-                data = self.ccxt_client.publicGetIndexesMarketNameCandles({
+                data = self.ccxt_client.public_get_indexes_market_name_candles({
                     'market_name': market.replace('-PERP', ''),
                     'start_time': from_time,
                     'end_time': end_time - 1, # キャッシュを無効にするために必要。境界値を含む仕様っぽいので含まないように調整
@@ -43,7 +43,7 @@ class FtxFetcher:
                     'limit': limit
                 })['result']
             elif price_type is None:
-                data = self.ccxt_client.publicGetMarketsMarketNameCandles({
+                data = self.ccxt_client.public_get_markets_market_name_candles({
                     'market_name': market,
                     'start_time': from_time,
                     'end_time': end_time - 1, # キャッシュを無効にするために必要。境界値を含む仕様っぽいので含まないように調整
@@ -112,7 +112,7 @@ class FtxFetcher:
             end_time = min([end_time, total_end_time]) # 未来時刻だと何も返らないので
             self.logger.debug('{} {} {}'.format(market, from_time, end_time))
 
-            data = self.ccxt_client.publicGetFundingRates({
+            data = self.ccxt_client.public_get_funding_rates({
                 'future': market,
                 'start_time': from_time,
                 'end_time': end_time - 1, # キャッシュを無効にするために必要。境界値を含む仕様っぽいので含まないように調整
@@ -194,7 +194,7 @@ class FtxFetcher:
     def _find_start_time(self, market=None):
         limit = 5000
 
-        data = self.ccxt_client.publicGetMarketsMarketNameCandles({
+        data = self.ccxt_client.public_get_markets_market_name_candles({
             'market_name': market,
             'resolution': 24 * 60 * 60,
             'limit': limit
@@ -214,7 +214,7 @@ class FtxFetcher:
 
     def _find_total_end_time(self, market=None):
         try:
-            future = self.ccxt_client.publicGetFuturesFutureName({
+            future = self.ccxt_client.public_get_futures_future_name({
                 'future_name': market,
             })['result']
         except Exception as e:

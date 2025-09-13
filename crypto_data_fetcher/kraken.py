@@ -26,7 +26,7 @@ class KrakenFetcher:
         end_time = int(math.floor(time.time()))
 
         while from_time < end_time:
-            data = self.ccxt_client.publicGetOHLC({
+            data = self.ccxt_client.public_get_ohlc({
                 'pair': market,
                 'since': from_time - 1, # krakenはfrom_timeを含まない
                 'interval': interval_sec // 60,

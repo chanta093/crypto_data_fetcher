@@ -1,4 +1,5 @@
 from logging import getLogger
+import pandas as pd
 
 def smart_append(df, other):
     if other is None or other.shape[0] == 0:
@@ -6,7 +7,7 @@ def smart_append(df, other):
     if df is None:
         df = other.copy()
     else:
-        df = df.append(other)
+        df = pd.concat([df, other])
     df.sort_index(inplace=True, kind='mergesort')
     # https://stackoverflow.com/questions/13035764/remove-rows-with-duplicate-indices-pandas-dataframe-and-timeseries
     return df[~df.index.duplicated(keep='last')]
