@@ -23,7 +23,7 @@ class BinanceFutureFetcher:
         dfs = []
 
         while True:
-            data = self.ccxt_client.fapiPublicGetKlines({
+            data = self.ccxt_client.fapiPublic_get_klines({
                 'symbol': market,
                 'startTime': from_time,
                 'interval': format_interval_sec(interval_sec),

@@ -5,11 +5,12 @@ verify_ssl = true
 
 [dev-packages]
 
+
 [packages]
-ccxt = "==1.57.43"
+ccxt = "*"
 pandas = "*"
 six = "*"
 joblib = "*"
 
 [requires]
-python_version = "3.6"
+python_version = "3.11"

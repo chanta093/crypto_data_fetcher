@@ -23,7 +23,7 @@ class BinanceSpotFetcher:
         dfs = []
 
         while True:
-            data = self.ccxt_client.publicGetKlines({
+            data = self.ccxt_client.public_get_klines({
                 'symbol': market,
                 'startTime': from_time,
                 'interval': format_interval_sec(interval_sec),
